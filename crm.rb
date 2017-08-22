@@ -29,17 +29,21 @@ class CRM
   print 'Enter a Note: '
   note = gets.chomp.to_s
 
-  Contact.create(first_name, last_name, email, note)
+  a=Contact.create(first_name, last_name, email, note)
+  puts a
+
   end
 
 
   def modify_existing_contact
    puts "Please enter the first_name of the contact you want to update."
-   contact_name=gets.chomp
-   found_contact=Contact.find_by("first_name", contact_name)
+   contact_name = gets.chomp
+   found_contact = Contact.find_by("first_name", contact_name)
    puts "What would you like to modify: first_name, last_name, email or note?"
-   variable=gets.chomp
-   found_contact.update(variable)
+   variable = gets.chomp
+   puts "Enter the value for #{variable}"
+   value = gets.chomp
+   found_contact.update(variable, value)
   end
 
   def delete_contact
@@ -51,13 +55,17 @@ class CRM
   end
 
   def display_all_contacts
-    Contact.all
+    a = Contact.all
+    puts a
   end
 
   def search_by_attribute
     puts "What would you like to search by: first_name, last_name, email or note?"
     attribute=gets.chomp
-    attribute=Contact.find_by(attribute, value)
+    puts "Enter the value for #{attribute}"
+    value=gets.chomp
+    found_contact=Contact.find_by(attribute, value)
+    puts found_contact
   end
 
   def call_option(number)
@@ -73,6 +81,7 @@ class CRM
   # haven't been implemented yet
     end
   end
+
   def main_menu
     while true # repeat indefinitely
     print_main_menu
