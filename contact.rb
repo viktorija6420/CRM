@@ -100,7 +100,7 @@ class Contact
 
    if attribute == "first_name" && contact.first_name == value
      return contact
-   elsif attributes == "last_name" && contact.last_name == value
+   elsif attribute == "last_name" && contact.last_name == value
      return contact
    elsif attribute == "email" && contact.email == value
      return contact
